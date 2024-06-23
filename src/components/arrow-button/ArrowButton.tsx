@@ -10,6 +10,7 @@ interface ArrowButtonProps {
 }
 
 export const ArrowButton = ({
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
 	onClick = () => {},
 	isOpen = false,
 }: ArrowButtonProps) => {
