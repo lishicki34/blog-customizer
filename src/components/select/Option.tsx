@@ -20,11 +20,10 @@ export const Option = (props: OptionProps) => {
 	} = props;
 	const optionRef = useRef<HTMLLIElement>(null);
 
-	const handleClick =
-		(clickedValue: OptionType['value']): MouseEventHandler<HTMLLIElement> =>
-		() => {
-			onClick(clickedValue);
-		};
+	const handleClick: MouseEventHandler<HTMLLIElement> = (event) => {
+		event.stopPropagation();
+		onClick(value);
+	};
 
 	useEnterOptionSubmit({
 		optionRef,
@@ -36,7 +35,7 @@ export const Option = (props: OptionProps) => {
 		<li
 			className={clsx(styles.option, styles[optionClassName || ''])}
 			value={value}
-			onClick={handleClick(value)}
+			onClick={handleClick}
 			tabIndex={0}
 			data-testid={`select-option-${value}`}
 			ref={optionRef}>
